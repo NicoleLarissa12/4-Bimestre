@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fã-Clube da Selena Gomez</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, #ff6699, #ffcc00);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 5px solid #ff6699;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            animation: bounce 1s ease infinite;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        /* Estrelas piscando */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .stars div {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #fff;
+            opacity: 0.8;
+            animation: twinkle 1.5s infinite alternate;
+        }
+
+        .stars div:nth-child(odd) {
+            animation-duration: 2s;
+            animation-delay: 1s;
+        }
+
+        .stars div:nth-child(even) {
+            animation-duration: 3s;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.8; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        nav {
+            background-color: #ff6699;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: inline-flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3em;
+            transition: all 0.3s ease-in-out;
+            border: 2px solid transparent;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+            border-color: #ffcc00;
+            background-color: white;
+        }
+
+        section {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #ffffff;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            color: #ff6699;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            animation: bounce 1s ease infinite;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .line-timeline {
+            list-style-type: none;
+            padding: 0;
+            margin: 40px auto;
+            max-width: 700px;
+        }
+
+        .line-timeline li {
+            padding-left: 25px;
+            margin-bottom: 30px;
+            position: relative;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .line-timeline li:before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 8px;
+            width: 20px;
+            height: 20px;
+            background-color: #ff6699;
+            border-radius: 50%;
+        }
+
+        .quiz-container {
+            background-color: #ffcc00;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+            border: 5px solid #ff6699;
+        }
+
+        .quiz-question {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .quiz-options button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #ff6699;
+            color: white;
+            border: 2px solid #ffffff;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-options button:hover {
+            background-color: #ffffff;
+            color: #ff6699;
+            border-color: #ff6699;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ff6699;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Estrelas piscando -->
+<div class="stars">
+    <div style="top: 10%; left: 20%; width: 8px; height: 8px; animation-delay: 0.5s;"></div>
+    <div style="top: 15%; left: 30%; width: 6px; height: 6px;"></div>
+    <div style="top: 50%; left: 70%; width: 10px; height: 10px; animation-delay: 1s;"></div>
+    <div style="top: 60%; left: 10%; width: 12px; height: 12px; animation-delay: 0.2s;"></div>
+    <div style="top: 75%; left: 80%; width: 7px; height: 7px;"></div>
+    <div style="top: 90%; left: 50%; width: 9px; height: 9px; animation-delay: 1.5s;"></div>
+</div>
+
+<header>
+    <h1>Fã-Clube da Selena Gomez</h1>
+    <p>Um espaço dedicado aos fãs da nossa estrela!</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#curiosidades">Curiosidades</a></li>
+        <li><a href="#line-timeline">Linha do Tempo</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+        <li><a href="#junte-se">Junte-se</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <!-- Seção Sobre -->
+    <section id="sobre">
+        <h2>Sobre Selena Gomez</h2>
+        <p>Selena Gomez é uma atriz, cantora, e produtora americana, conhecida por seu papel em "Wizards of Waverly Place" e por sua carreira musical como cantora e compositora. Ela também é ativista e fundadora da produtora "July Moon Productions". Ao longo de sua carreira, Selena se tornou uma das artistas mais influentes da sua geração.</p>
+    </section>
+
+    <!-- Linha do Tempo -->
+    <section id="line-timeline">
+        <h2>Linha do Tempo</h2>
+        <ul class="line-timeline">
+            <li>2002 - Selena começa sua carreira na televisão com participação em "Barney & Friends".</li>
+            <li>2007 - Inicia o papel principal em "Wizards of Waverly Place".</li>
+            <li>2010 - Lança sua banda "Selena Gomez & The Scene" e o álbum "Kiss & Tell".</li>
+            <li>2014 - Lança o álbum "Revival" e foca em sua carreira solo.</li>
+            <li>2020 - Lança o álbum "Rare" e continua a consolidar sua carreira musical e de atriz.</li>
+        </ul>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz">
+        <div class="quiz-container">
+            <h2 class="quiz-question" id="quiz-question">Pergunta do quiz aqui...</h2>
+            <div class="quiz-options" id="quiz-options"></div>
+            <p id="quiz-feedback"></p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 Fã-Clube da Selena Gomez | Criado com ❤ por Fãs</p>
+    <a href="#topo">Voltar ao topo</a>
+</footer>
+
+<script>
+    const questions = [
+        { question: "Qual foi o primeiro papel de Selena na TV?", options: ["Wizards of Waverly Place", "Barney & Friends", "Hannah Montana", "Lizzie McGuire"], correct: 1 },
+        { question: "Qual é o nome da produtora de Selena Gomez?", options: ["Rare Productions", "July Moon Productions", "Gomez Films", "Selena Studios"], correct: 1 },
+        { question: "Qual foi o nome de seu primeiro álbum com a banda?", options: ["Kiss & Tell", "Revival", "Rare", "Selena Gomez & The Scene"], correct: 0 },
+        { question: "Em que ano Selena Gomez lançou o álbum 'Rare'?", options: ["2017", "2018", "2019", "2020"], correct: 3 },
+        { question: "Qual é o maior sucesso de Selena Gomez?", options: ["Come & Get It", "Bad Liar", "Lose You to Love Me", "The Heart Wants What It Wants"], correct: 2 }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function loadQuestion() {
+        const question = questions[currentQuestionIndex];
+        document.getElementById("quiz-question").innerText = question.question;
+        const optionsDiv = document.getElementById("quiz-options");
+        optionsDiv.innerHTML = '';
+        question.options.forEach((option, index) => {
+            const button = document.createElement("button");
+            button.innerText = option;
+            button.onclick = () => checkAnswer(index);
+            optionsDiv.appendChild(button);
+        });
+        document.getElementById("quiz-feedback").innerText = '';
+    }
+
+    function checkAnswer(selectedIndex) {
+        const question = questions[currentQuestionIndex];
+        if (selectedIndex === question.correct) {
+            score++;
+            document.getElementById("quiz-feedback").innerText = "Resposta correta! 🎉";
+        } else {
+            document.getElementById("quiz-feedback").innerText = "Resposta errada. 😞";
+        }
+
+        setTimeout(() => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                document.getElementById("quiz-feedback").innerText += ` Sua pontuação final foi: ${score} de ${questions.length}`;
+            }
+        }, 1500);
+    }
+
+    window.onload = loadQuestion;
+</script>
+
+</body>
+</html>
